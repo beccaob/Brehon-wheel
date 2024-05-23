@@ -87,7 +87,7 @@ function drawWheel() {
         ctx.rotate(angle + segmentAngle / 2);
         ctx.textAlign = 'right';
         ctx.fillStyle = 'white';
-        ctx.font = 'bold 50px "Libre Baskerville", serif';
+        ctx.font = 'bold 65px "Libre Baskerville", serif';
         ctx.fillText(wheelOptions[i], wheelRadius - 10, 10);
         ctx.restore();
     }
