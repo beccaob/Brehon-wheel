@@ -1,12 +1,11 @@
 const canvas = document.getElementById('wheelCanvas');
 const ctx = canvas.getContext('2d');
-const spinButton = document.getElementById('spinButton');
 const resultText = document.getElementById('result');
 
-const colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#FFD333', '#33FFF3'];
-const labels = ['Prize 1', 'Prize 2', 'Prize 3', 'Prize 4', 'Prize 5', 'Prize 6'];
+const options = ['WINNER', 'SPIN AGAIN', 'BETTER LUCK NEXT TIME'];
+const colors = ['#4A235A', '#512E5F', '#5B2C6F'];
 
-const numSegments = labels.length;
+const numSegments = options.length;
 const segmentAngle = 2 * Math.PI / numSegments;
 
 let isSpinning = false;
@@ -29,8 +28,8 @@ function drawWheel() {
         ctx.rotate(angle + segmentAngle / 2);
         ctx.textAlign = 'right';
         ctx.fillStyle = 'white';
-        ctx.font = 'bold 20px Arial';
-        ctx.fillText(labels[i], canvas.width / 2 - 10, 10);
+        ctx.font = 'bold 20px "Libre Baskerville", serif';
+        ctx.fillText(options[i], canvas.width / 2 - 10, 10);
         ctx.restore();
     }
 }
@@ -58,14 +57,12 @@ function spinWheel() {
             cancelAnimationFrame(spinTimeout);
             isSpinning = false;
             const winningIndex = Math.floor((startAngle / segmentAngle) % numSegments);
-            resultText.textContent = `You won: ${labels[numSegments - 1 - winningIndex]}`;
+            resultText.textContent = `You got: ${options[numSegments - 1 - winningIndex]}`;
         }
     }
 
     spinTimeout = requestAnimationFrame(animate);
 }
-
-spinButton.addEventListener('click', spinWheel);
 
 document.addEventListener('keydown', (event) => {
     if (event.code === 'Space') {
@@ -74,4 +71,5 @@ document.addEventListener('keydown', (event) => {
 });
 
 drawWheel();
+
 

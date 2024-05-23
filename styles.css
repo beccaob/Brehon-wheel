@@ -4,7 +4,7 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Libre Baskerville', serif;
     background-color: #f0f0f0;
 }
 
@@ -15,16 +15,14 @@ body {
 #wheelCanvas {
     display: block;
     margin: 0 auto;
-}
-
-#spinButton {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
+    max-width: 100%;
+    height: auto;
 }
 
 #result {
     margin-top: 20px;
     font-size: 20px;
     font-weight: bold;
+    color: #4A235A; /* Deep purple for result text */
 }
+
