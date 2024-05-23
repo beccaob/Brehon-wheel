@@ -1,0 +1,30 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    text-align: center;
+}
+
+#wheelCanvas {
+    display: block;
+    margin: 0 auto;
+}
+
+#spinButton {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
