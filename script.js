@@ -2,10 +2,25 @@ const canvas = document.getElementById('wheelCanvas');
 const ctx = canvas.getContext('2d');
 const resultText = document.getElementById('result');
 
+// Define the wheel options and colors
 const options = ['WINNER', 'SPIN AGAIN', 'BETTER LUCK NEXT TIME'];
 const colors = ['#4A235A', '#512E5F', '#5B2C6F'];
 
-const numSegments = options.length;
+// Number of repetitions for each option
+const repetitions = 5; // Repeat each option 5 times
+
+// Create an array with repeated options and corresponding colors
+const wheelOptions = [];
+const wheelColors = [];
+
+for (let i = 0; i < options.length; i++) {
+    for (let j = 0; j < repetitions; j++) {
+        wheelOptions.push(options[i]);
+        wheelColors.push(colors[i]);
+    }
+}
+
+const numSegments = wheelOptions.length;
 const segmentAngle = 2 * Math.PI / numSegments;
 
 let isSpinning = false;
@@ -20,7 +35,7 @@ function drawWheel() {
         ctx.beginPath();
         ctx.moveTo(canvas.width / 2, canvas.height / 2);
         ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2, angle, angle + segmentAngle);
-        ctx.fillStyle = colors[i % colors.length];
+        ctx.fillStyle = wheelColors[i % wheelColors.length];
         ctx.fill();
 
         ctx.save();
@@ -29,7 +44,7 @@ function drawWheel() {
         ctx.textAlign = 'right';
         ctx.fillStyle = 'white';
         ctx.font = 'bold 20px "Libre Baskerville", serif';
-        ctx.fillText(options[i], canvas.width / 2 - 10, 10);
+        ctx.fillText(wheelOptions[i], canvas.width / 2 - 10, 10);
         ctx.restore();
     }
 }
@@ -38,38 +53,6 @@ function spinWheel() {
     if (isSpinning) return;
     isSpinning = true;
     const spinAngle = Math.random() * 10 + 10;
-    const spinTime = 3000; // Spin time in milliseconds
-
-    const startTime = performance.now();
-
-    function animate(currentTime) {
-        const elapsedTime = currentTime - startTime;
-        const progress = Math.min(elapsedTime / spinTime, 1);
-        const easeOutProgress = Math.pow(progress, 2);
-
-        startAngle += easeOutProgress * spinAngle;
-
-        drawWheel();
-
-        if (progress < 1) {
-            spinTimeout = requestAnimationFrame(animate);
-        } else {
-            cancelAnimationFrame(spinTimeout);
-            isSpinning = false;
-            const winningIndex = Math.floor((startAngle / segmentAngle) % numSegments);
-            resultText.textContent = `You got: ${options[numSegments - 1 - winningIndex]}`;
-        }
-    }
-
-    spinTimeout = requestAnimationFrame(animate);
-}
-
-document.addEventListener('keydown', (event) => {
-    if (event.code === 'Space') {
-        spinWheel();
-    }
-});
-
-drawWheel();
+    const spinTime = 3000; // Spin time in 
 
 
