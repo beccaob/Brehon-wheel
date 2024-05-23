@@ -1,3 +1,23 @@
+document.addEventListener('keydown', (event) => {
+    if (event.code === 'Enter') {
+        startGame();
+    }
+});
+
+function startGame() {
+    const startPage = document.getElementById('startPage');
+    const gamePage = document.getElementById('gamePage');
+
+    // Hide start page
+    startPage.style.display = 'none';
+
+    // Show game page
+    gamePage.style.display = 'block';
+
+    // Start the wheel
+    drawWheel();
+}
+
 const canvas = document.getElementById('wheelCanvas');
 const ctx = canvas.getContext('2d');
 const resultText = document.getElementById('result');
@@ -46,8 +66,8 @@ let spinTimeout;
 
 function drawWheel() {
     // Adjust canvas size
-    canvas.width = 800; // Adjust as needed
-    canvas.height = 800; // Adjust as needed
+    canvas.width = 2000; // Adjust as needed
+    canvas.height = 2000; // Adjust as needed
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -67,7 +87,7 @@ function drawWheel() {
         ctx.rotate(angle + segmentAngle / 2);
         ctx.textAlign = 'right';
         ctx.fillStyle = 'white';
-        ctx.font = 'bold 20px "Libre Baskerville", serif';
+        ctx.font = 'bold 50px "Libre Baskerville", serif';
         ctx.fillText(wheelOptions[i], wheelRadius - 10, 10);
         ctx.restore();
     }
