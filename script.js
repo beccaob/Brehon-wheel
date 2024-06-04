@@ -23,7 +23,7 @@ const ctx = canvas.getContext('2d');
 const resultText = document.getElementById('result');
 
 // Define the wheel options and colors
-const options = ['WINNER', 'SPIN AGAIN', 'NEXT TIME'];
+const options = ['WINNER', 'SPIN AGAIN'];
 const colors = ['#4A235A', '#512E5F', '#5B2C6F'];
 
 // Number of repetitions for each option
