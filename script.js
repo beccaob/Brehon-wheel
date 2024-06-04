@@ -66,8 +66,8 @@ let spinTimeout;
 
 function drawWheel() {
     // Adjust canvas size
-    canvas.width = 2000; // Adjust as needed
-    canvas.height = 2000; // Adjust as needed
+    canvas.width = 800; // Adjust as needed
+    canvas.height = 800; // Adjust as needed
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -87,7 +87,7 @@ function drawWheel() {
         ctx.rotate(angle + segmentAngle / 2);
         ctx.textAlign = 'right';
         ctx.fillStyle = 'white';
-        ctx.font = 'bold 65px "Libre Baskerville", serif';
+        ctx.font = 'bold 25px "Libre Baskerville", serif';
         ctx.fillText(wheelOptions[i], wheelRadius - 10, 10);
         ctx.restore();
     }
